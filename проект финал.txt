@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+using namespace std;
+// Функция для шифрования сообщения путем сдвига символов на указанное значение (shift)
+string encryptMessage(string message, int shift);
+// Функция для дешифрования зашифрованного сообщения обратно на исходное значение
+string decryptMessage(string encryptedMessage, int shift);
+int main() {
+    int shift;
+    cout << "Введите значение сдвига для шифрования: ";
+    cin >> shift;
+    cin.ignore();
+    string message;
+    cout << "Введите сообщение: ";
+    getline(cin, message);
+    string encryptedMessage = encryptMessage(message, shift);
+    cout << "Зашифрованное сообщение: " << encryptedMessage << endl;
+    string decryptedMessage = decryptMessage(encryptedMessage, shift);
+    cout << "Разшифрованное сообщение: " << decryptedMessage << endl;
+    return 0;
+}
+// Функция шифрования сообщения
+string encryptMessage(string message, int shift) {
+    string encryptedMessage = "";
+    for (char& c : message) {
+        encryptedMessage += c + shift;
+    }
+    return encryptedMessage;
+}
+// Функция дешифрования сообщения
+string decryptMessage(string encryptedMessage, int shift) {
+    string decryptedMessage = "";
+    for (char& c : encryptedMessage) {
+        decryptedMessage += c - shift;
+    }
+    return decryptedMessage;
+}
